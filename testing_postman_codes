@@ -1,0 +1,53 @@
+A — Simple search (GET)
+
+GET http://localhost:8080/api/v1/products/search?keyword=Hydrating
+
+GET http://localhost:8080/api/v1/products/search?keyword=lipstick
+
+GET http://localhost:8080/api/v1/products/search?keyword=Cherry
+
+GET http://localhost:8080/api/v1/products/search?keyword=serum
+
+GET http://localhost:8080/api/v1/products/search?keyword=Maybelline
+
+B — Synonym search (GET)
+
+(Uses synonyms analyzer + synonyms field; try these)
+
+GET http://localhost:8080/api/v1/products/synonym-search?keyword=lip%20gloss
+
+GET http://localhost:8080/api/v1/products/synonym-search?keyword=elixir
+
+GET http://localhost:8080/api/v1/products/synonym-search?keyword=fragrance
+
+GET http://localhost:8080/api/v1/products/synonym-search?keyword=moisturiser
+
+GET http://localhost:8080/api/v1/products/synonym-search?keyword=hair%20wash
+
+C — Faceted search (GET) — multiple brands/colors via repeated param
+
+Examples:
+
+GET http://localhost:8080/api/v1/products/faceted-search?keyword=hydrating&brand=Nykaa&brand=MAC&color=Pink&priceMin=200&priceMax=1200&ratingMin=3&ratingMax=5
+
+GET http://localhost:8080/api/v1/products/faceted-search?category=Moisturizer
+
+GET http://localhost:8080/api/v1/products/faceted-search?color=Gold&color=Silver
+
+GET http://localhost:8080/api/v1/products/faceted-search?keyword=shampoo&priceMax=500
+
+GET http://localhost:8080/api/v1/products/faceted-search?keyword=lipstick&ratingMin=4
+
+D — Enhanced search (GET) — multi filters + pagination
+
+Examples (use repeated brands / colors to pass lists):
+
+GET http://localhost:8080/api/v1/products/enhanced-search?keyword=hydrating&category=Moisturizer&brands=Nykaa&brands=L'Oreal&colors=Pink&priceMin=200&priceMax=1500&ratingMin=4&limit=20&offset=0
+
+GET http://localhost:8080/api/v1/products/enhanced-search?keyword=serum&limit=10&offset=0
+
+GET http://localhost:8080/api/v1/products/enhanced-search?brands=MAC&brands=Clinique&colors=Gold&limit=25&offset=0
+
+GET http://localhost:8080/api/v1/products/enhanced-search?keyword=face%20mask&ratingMin=3&limit=15&offset=0
+
+GET http://localhost:8080/api/v1/products/enhanced-search?category=Shampoo&priceMax=800&limit=10&offset=0
